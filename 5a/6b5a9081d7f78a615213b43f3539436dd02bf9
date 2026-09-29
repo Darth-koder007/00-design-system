@@ -1,0 +1,74 @@
+packages/components/src/Dropdown.test.tsx
+  s_f0c6a093b18fbc::t_340e2196e573ee 1-57
+packages/components/src/Table.css
+  s_f0c6a093b18fbc::t_97f4e7439a33be 1-36
+packages/components/src/Tooltip.tsx
+  s_f0c6a093b18fbc::t_ff7c3959fa9faa 1-47
+packages/components/src/Tooltip.test.tsx
+  s_f0c6a093b18fbc::t_24ba7f9236becf 1-38
+packages/components/src/Tabs.css
+  s_f0c6a093b18fbc::t_0c1a249327723c 1-30
+packages/components/src/Tabs.tsx
+  s_f0c6a093b18fbc::t_9d2f5390a17d1d 1-84,87-153
+  s_f0c6a093b18fbc::t_b0be1627514c3a 85-86
+  s_f0c6a093b18fbc::t_c8311efe116ab4 154
+packages/components/src/Tabs.test.tsx
+  s_f0c6a093b18fbc::t_579d703ff00ff5 1-50
+packages/components/src/Card.tsx
+  s_f0c6a093b18fbc::t_f694620044a7de 1-23
+packages/components/src/Dropdown.tsx
+  s_f0c6a093b18fbc::t_d722108e87c190 1-58,61-129
+  s_f0c6a093b18fbc::t_3d7d589ed71ebf 59-60
+packages/components/src/Toast.tsx
+  s_f0c6a093b18fbc::t_a668b39873369f 2-79
+  s_f0c6a093b18fbc::t_8884a4fefab6b8 1
+packages/components/src/Modal.css
+  s_f0c6a093b18fbc::t_09a789d23032d2 1-46
+packages/components/src/Table.tsx
+  s_f0c6a093b18fbc::t_e96cfa48215ad1 1-173
+  s_f0c6a093b18fbc::t_646a3b2e870929 174-182
+packages/components/src/Dropdown.css
+  s_f0c6a093b18fbc::t_fd1cec927d24a5 1-43
+packages/components/src/Table.test.tsx
+  s_f0c6a093b18fbc::t_b9c9c411884c47 1-66
+packages/components/src/Tooltip.css
+  s_f0c6a093b18fbc::t_2edfbffa6c2917 1-41
+packages/components/src/index.ts
+  s_f0c6a093b18fbc::t_d4aaee1edd0fb0 8-14,23-29
+  s_f0c6a093b18fbc::t_c6798a01dc7dbf 30-43
+packages/components/src/Toast.test.tsx
+  s_f0c6a093b18fbc::t_a963b7bd372e26 5,8-11
+  s_f0c6a093b18fbc::t_fc08dfed2ebdff 3-4,6-7,12-25,27-32,34-42,44-49,52-55,57-62,64-67
+  s_f0c6a093b18fbc::t_5fefe9b6caf709 1,26,33,43,50-51,56,63
+  s_f0c6a093b18fbc::t_45b249bc7f3fc5 2
+packages/components/src/Modal.tsx
+  s_f0c6a093b18fbc::t_5946de806e79d7 49
+  s_f0c6a093b18fbc::t_1a3ed7c1f350de 1-48,50-91
+packages/components/src/Card.css
+  s_f0c6a093b18fbc::t_6f5060214f2e90 1-18
+packages/components/src/Toast.css
+  s_f0c6a093b18fbc::t_41bef961ea8569 1-42
+packages/components/src/Card.test.tsx
+  s_f0c6a093b18fbc::t_66f4554798c48d 1-15
+PLAN.md
+  s_f0c6a093b18fbc::t_9e2fe570742a4b 42,46-50
+packages/components/src/Modal.test.tsx
+  s_f0c6a093b18fbc::t_070f924cbe5032 29
+  s_f0c6a093b18fbc::t_832d8084ee14ee 1-28,30-70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "5a6b5a9081d7f78a615213b43f3539436dd02bf9",
+  "prompts": {},
+  "sessions": {
+    "s_f0c6a093b18fbc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdf59d10-8ac1-40c5-8e78-59b7400789f3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Darth-koder007 <vj2010sn@gmail.com>"
+    }
+  }
+}
