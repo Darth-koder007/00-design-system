@@ -4,3 +4,7 @@ storybook-static/
 .turbo/
 *.tsbuildinfo
 .DS_Store
+
+# Visual regression: baseline snapshots under __snapshots__ ARE committed —
+# only the failure-diff output (regenerated per run) is ignored.
+apps/storybook/__snapshots__/__diff_output__/

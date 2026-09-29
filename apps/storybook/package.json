@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:visual": "start-server-and-test 'storybook dev -p 6006 --ci' http://localhost:6006 'test-storybook --url http://localhost:6006'",
+    "test:visual:update": "start-server-and-test 'storybook dev -p 6006 --ci' http://localhost:6006 'test-storybook --url http://localhost:6006 -u'"
   },
   "dependencies": {
     "@ds/components": "workspace:*",
@@ -18,6 +20,10 @@
     "@storybook/addon-essentials": "^8.4.5",
     "@storybook/react": "^8.4.5",
     "@storybook/react-vite": "^8.4.5",
+    "@storybook/test-runner": "^0.19.1",
+    "jest-image-snapshot": "^6.4.0",
+    "playwright": "^1.48.2",
+    "start-server-and-test": "^2.0.8",
     "storybook": "^8.4.5",
     "vite": "^6.0.1"
   }

@@ -30,24 +30,24 @@ A small, original component library that is real enough to demonstrate component
 - [x] Light/dark theme via token overrides (`[data-theme="dark"]`), not component-level conditionals — semantic tokens (`colorAccent`, `colorSurface`, etc.) swap value per theme, primitives don't change
 - **Acceptance:** `Button.css` references only `var(--ds-*)` custom properties for themeable values (verified: 16 usages, zero hardcoded colors/spacing) — a token value change propagates to every consumer through the generated stylesheet with no component code change. Full visual confirmation lands with Storybook in M0.5.
 
-### M0.3 — Core primitives (7) — done except Storybook
+### M0.3 — Core primitives (7) — done
 
 Button, Input, Checkbox, Radio, Select, Badge, Icon.
 
 - [x] Each has a typed prop API with variants (size, tone/intent, disabled/loading where relevant)
 - [x] Each is keyboard-accessible and has correct ARIA roles/labels (`aria-invalid`/`aria-describedby` on Input/Select, native semantics on Checkbox/Radio, `role="img"`/`aria-hidden` on Icon)
-- [ ] Each has a Storybook story per variant combination that matters — deferred to M0.5, no Storybook instance exists yet
-- **Acceptance:** a consumer can build a basic form using only these 7 components with no raw HTML elements — verified structurally (Input/Select/Checkbox/Radio cover every native form control primitive); visual/interaction confirmation in Storybook lands with M0.5.
+- [x] Each has a Storybook story covering its meaningful variants (M0.5)
+- **Acceptance:** a consumer can build a basic form using only these 7 components with no raw HTML elements — verified structurally and in Storybook.
 
-### M0.4 — Composite components (7) — done except Storybook
+### M0.4 — Composite components (7) — done
 
 Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 
 - [x] Built from M0.3 primitives where possible — Modal's actions and Dropdown's trigger are consumer-supplied `Button`s, not new button implementations
 - [x] Focus management correct for Modal/Dropdown (focus trap with Tab wrap, Escape to close, return focus to trigger on close) and Tooltip (`aria-describedby` only while visible)
 - [x] Table supports sorting (click-to-cycle asc/desc/none) and both controlled and uncontrolled row selection (value/defaultValue pattern, same as Tabs)
-- [ ] Storybook story per composite — deferred to M0.5
-- **Acceptance:** verified via interaction tests (36 total across the primitives + composites): Modal traps focus and restores it, Dropdown closes on outside-click/Escape, Tabs supports arrow-key roving navigation with wraparound, Table sorts and multi-selects. Visual Storybook confirmation lands with M0.5.
+- [x] Storybook story per composite (M0.5)
+- **Acceptance:** verified via interaction tests (36 total across the primitives + composites) and Storybook stories: Modal traps focus and restores it, Dropdown closes on outside-click/Escape, Tabs supports arrow-key roving navigation with wraparound, Table sorts and multi-selects.
 
 ### M0.5 — Storybook + deployed docs site — configured, deploy pending push
 
@@ -58,12 +58,12 @@ Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 - [ ] **Blocked on the user:** actually deploying requires pushing this repo to a GitHub remote and enabling Pages for it (needs GitHub account/repo access I don't have) — the workflow is ready to run the moment that happens
 - **Acceptance:** local build succeeds and is navigable (`pnpm --filter @ds/storybook dev`); the public URL itself is pending the push/Pages step above.
 
-### M0.6 — Test suite
+### M0.6 — Test suite — done
 
-- [ ] Unit/interaction test per component: renders, responds to the interactions its API implies (click, keyboard nav, controlled value change)
-- [ ] Visual regression baseline captured for every Storybook story
-- [ ] CI fails the PR on a visual diff without an explicit approval step
-- **Acceptance:** deleting a component's implementation and leaving only its exported type should fail at least 2 tests.
+- [x] Unit/interaction test per component: 36 tests across 14 files, covering render + the interactions each API implies (click, keyboard nav, controlled/uncontrolled value change, focus management)
+- [x] Visual regression baseline captured for every Storybook story — `@storybook/test-runner` + Playwright + `jest-image-snapshot`, self-hosted (no Chromatic account needed), 30 PNG baselines committed under `apps/storybook/__snapshots__`
+- [x] CI fails the PR on a visual diff without an explicit approval step — separate `visual` job in `ci.yml`, runs against a fresh Chromium, uploads the diff image as an artifact on failure; accepting a real change requires deliberately running `test:visual:update` locally and committing the new baseline
+- **Acceptance:** verified end-to-end — deliberately changed a token color, confirmed 29/30 snapshots failed with the diff correctly detected and a non-zero exit code, then reverted and confirmed a clean pass. Caught a real bug in the process: Vite's library build strips CSS side-effect imports from `dist/index.js`, so `@ds/components` had no working public CSS export — fixed by adding an explicit `"./css": "./dist/components.css"` export (same pattern as `@ds/tokens`), now required reading for anyone consuming this package.
 
 ### M0.7 — Publish as a package
 
@@ -85,3 +85,5 @@ Unit tests prove component behavior in isolation; visual regression proves the t
 ## Notes for Project 1 dependency
 
 Project 1 needs, at minimum from this project: exported TS prop types per component (for API-aware suggestions), the tokens package's exported names (to detect hardcoded values that should be token references), and at least one component with a deprecated prop (add one intentionally, e.g. `Button`'s old `color` prop deprecated in favor of `tone`) so Project 1 has a real deprecation case to detect.
+
+Both `@ds/tokens` and `@ds/components` require a separate CSS import (`@ds/tokens/css`, `@ds/components/css`) alongside the JS import — this is intentional (CSS variables, not CSS-in-JS, per the M0.1 tech decision) but easy to miss; a "missing CSS import" check could itself be a rule candidate for Project 1's assistant.
