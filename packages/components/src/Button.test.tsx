@@ -25,6 +25,20 @@ describe("Button", () => {
     expect(button).toHaveClass("ds-button--lg", "ds-button--danger");
   });
 
+  it("falls back to the deprecated color prop when tone is not set", () => {
+    render(<Button color="danger">Delete</Button>);
+    expect(screen.getByRole("button", { name: "Delete" })).toHaveClass("ds-button--danger");
+  });
+
+  it("prefers tone over the deprecated color prop when both are given", () => {
+    render(
+      <Button color="danger" tone="accent">
+        Save
+      </Button>
+    );
+    expect(screen.getByRole("button", { name: "Save" })).toHaveClass("ds-button--accent");
+  });
+
   it("is not clickable when disabled", async () => {
     const onClick = vi.fn();
     render(

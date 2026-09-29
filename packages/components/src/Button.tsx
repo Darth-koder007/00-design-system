@@ -6,6 +6,8 @@ export type ButtonTone = "neutral" | "accent" | "danger";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   tone?: ButtonTone;
+  /** @deprecated Use `tone` instead. Kept for pre-0.1 consumers; will be removed in 1.0. */
+  color?: ButtonTone;
 }
 
 const sizeClass: Record<ButtonSize, string> = {
@@ -21,10 +23,11 @@ const toneClass: Record<ButtonTone, string> = {
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { size = "md", tone = "neutral", className, children, ...rest },
+  { size = "md", tone, color, className, children, ...rest },
   ref
 ) {
-  const classes = ["ds-button", sizeClass[size], toneClass[tone], className]
+  const resolvedTone = tone ?? color ?? "neutral";
+  const classes = ["ds-button", sizeClass[size], toneClass[resolvedTone], className]
     .filter(Boolean)
     .join(" ");
 
