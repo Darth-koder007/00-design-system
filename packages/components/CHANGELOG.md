@@ -1,5 +1,9 @@
 # @ds/components
 
+## 0.1.2
+
+- Added a `"./package.json"` export entry. Node's `exports` field blocks resolving a package's own `package.json` by default once `exports` is present at all — Project 1's static-analysis tool needs to resolve this package's on-disk location, and hit exactly this wall.
+
 ## 0.1.1
 
 - `Button`: added a deprecated `color` prop (kept for pre-0.1 consumers, superseded by `tone`) — exists specifically as a real deprecation case for Project 1's design-system assistant to detect and migrate.

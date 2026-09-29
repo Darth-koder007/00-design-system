@@ -1,12 +1,13 @@
 {
   "name": "@ds/tokens",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./css": "./dist/tokens.css"
+    "./css": "./dist/tokens.css",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
