@@ -1,0 +1,18 @@
+.ds-card {
+  background: var(--ds-color-surface-raised);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-sm);
+}
+
+.ds-card--padding-sm {
+  padding: var(--ds-spacing-3);
+}
+
+.ds-card--padding-md {
+  padding: var(--ds-spacing-4);
+}
+
+.ds-card--padding-lg {
+  padding: var(--ds-spacing-6);
+}

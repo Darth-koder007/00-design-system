@@ -1,0 +1,41 @@
+.ds-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.ds-tooltip {
+  position: absolute;
+  z-index: var(--ds-z-tooltip);
+  background: var(--ds-color-gray-900);
+  color: #ffffff;
+  font-family: var(--ds-font-family-base);
+  font-size: var(--ds-font-size-xs);
+  padding: var(--ds-spacing-1) var(--ds-spacing-2);
+  border-radius: var(--ds-radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ds-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(-1 * var(--ds-spacing-1)));
+}
+
+.ds-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(var(--ds-spacing-1));
+}
+
+.ds-tooltip--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(calc(-1 * var(--ds-spacing-1)));
+}
+
+.ds-tooltip--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(var(--ds-spacing-1));
+}

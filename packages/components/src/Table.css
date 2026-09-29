@@ -1,0 +1,36 @@
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ds-font-family-base);
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-text-primary);
+}
+
+.ds-table-cell {
+  padding: var(--ds-spacing-2) var(--ds-spacing-3);
+  border-bottom: 1px solid var(--ds-color-border);
+  text-align: left;
+}
+
+.ds-table-cell--checkbox {
+  width: 1%;
+}
+
+.ds-table-header-cell {
+  font-weight: var(--ds-font-weight-medium);
+  color: var(--ds-color-text-secondary);
+}
+
+.ds-table-sort-button {
+  background: transparent;
+  border: none;
+  font: inherit;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ds-table-row:hover {
+  background: var(--ds-color-surface);
+}

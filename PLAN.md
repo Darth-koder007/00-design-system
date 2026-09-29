@@ -39,14 +39,15 @@ Button, Input, Checkbox, Radio, Select, Badge, Icon.
 - [ ] Each has a Storybook story per variant combination that matters — deferred to M0.5, no Storybook instance exists yet
 - **Acceptance:** a consumer can build a basic form using only these 7 components with no raw HTML elements — verified structurally (Input/Select/Checkbox/Radio cover every native form control primitive); visual/interaction confirmation in Storybook lands with M0.5.
 
-### M0.4 — Composite components (7)
+### M0.4 — Composite components (7) — done except Storybook
 
 Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 
-- [ ] Built from M0.3 primitives where possible (Modal uses Button for its actions, etc.) — this composability is itself a portfolio signal
-- [ ] Focus management correct for Modal/Dropdown (focus trap, return focus on close)
-- [ ] Table supports sorting and a controlled/uncontrolled selection pattern
-- **Acceptance:** each composite has a Storybook story demonstrating a realistic use case, not just default props.
+- [x] Built from M0.3 primitives where possible — Modal's actions and Dropdown's trigger are consumer-supplied `Button`s, not new button implementations
+- [x] Focus management correct for Modal/Dropdown (focus trap with Tab wrap, Escape to close, return focus to trigger on close) and Tooltip (`aria-describedby` only while visible)
+- [x] Table supports sorting (click-to-cycle asc/desc/none) and both controlled and uncontrolled row selection (value/defaultValue pattern, same as Tabs)
+- [ ] Storybook story per composite — deferred to M0.5
+- **Acceptance:** verified via interaction tests (36 total across the primitives + composites): Modal traps focus and restores it, Dropdown closes on outside-click/Escape, Tabs supports arrow-key roving navigation with wraparound, Table sorts and multi-selects. Visual Storybook confirmation lands with M0.5.
 
 ### M0.5 — Storybook + deployed docs site
 
