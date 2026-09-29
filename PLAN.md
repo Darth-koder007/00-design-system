@@ -15,13 +15,13 @@ A small, original component library that is real enough to demonstrate component
 
 ## Milestones
 
-### M0.1 — Repo scaffold
+### M0.1 — Repo scaffold — done
 
-- [ ] pnpm workspace with `packages/tokens`, `packages/components`, `apps/storybook`
-- [ ] TypeScript strict mode, shared `tsconfig.base.json`
-- [ ] ESLint + Prettier configured, pre-commit hook (lint-staged)
-- [ ] GitHub Actions: lint + typecheck + test on every PR
-- **Acceptance:** `pnpm install && pnpm build && pnpm test` succeeds from a clean clone.
+- [x] pnpm workspace with `packages/tokens`, `packages/components` (`apps/storybook` added in M0.5, not needed until then)
+- [x] TypeScript strict mode, shared `tsconfig.base.json`
+- [x] ESLint (flat config) + Prettier configured, pre-commit hook (husky + lint-staged)
+- [x] GitHub Actions: lint + typecheck + test + build on every PR (`.github/workflows/ci.yml`)
+- **Acceptance:** verified — `pnpm install && pnpm lint && pnpm typecheck && pnpm test && pnpm build` all pass from a clean install.
 
 ### M0.2 — Design tokens — done
 
