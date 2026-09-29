@@ -1,0 +1,51 @@
+.ds-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-spacing-2);
+  font-family: var(--ds-font-family-base);
+  font-weight: var(--ds-font-weight-medium);
+  border-radius: var(--ds-radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.ds-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.ds-button--sm {
+  padding: var(--ds-spacing-1) var(--ds-spacing-3);
+  font-size: var(--ds-font-size-sm);
+}
+
+.ds-button--md {
+  padding: var(--ds-spacing-2) var(--ds-spacing-4);
+  font-size: var(--ds-font-size-md);
+}
+
+.ds-button--lg {
+  padding: var(--ds-spacing-3) var(--ds-spacing-6);
+  font-size: var(--ds-font-size-lg);
+}
+
+.ds-button--neutral {
+  background: var(--ds-color-surface-raised);
+  color: var(--ds-color-text-primary);
+  border-color: var(--ds-color-border);
+}
+
+.ds-button--accent {
+  background: var(--ds-color-accent);
+  color: #ffffff;
+}
+
+.ds-button--accent:not(:disabled):hover {
+  background: var(--ds-color-accent-hover);
+}
+
+.ds-button--danger {
+  background: var(--ds-color-danger);
+  color: #ffffff;
+}

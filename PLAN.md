@@ -1,0 +1,83 @@
+# Project 0 — Design System
+
+## Purpose
+
+A small, original component library that is real enough to demonstrate component API design and release discipline, and serves as the substrate Projects 1 and 3 operate on. Not a Delivery Hero clone — original tokens, original component set, original naming.
+
+## Tech decisions
+
+- **Framework:** React + TypeScript.
+- **Build:** Vite (library mode) — fast, standard, no build-tool detours to defend in an interview.
+- **Styling:** CSS variables driven by design tokens (not a CSS-in-JS runtime dependency) — keeps the token layer inspectable by Project 1's static analysis.
+- **Docs:** Storybook 8, deployed via Chromatic or GitHub Pages.
+- **Testing:** Vitest + React Testing Library for unit/interaction tests; Chromatic (or Playwright + pixel diff) for visual regression.
+- **Monorepo:** pnpm workspaces, two packages: `tokens` and `components` — mirrors real design-system structure and gives Project 1 a clean tokens package to statically analyze.
+
+## Milestones
+
+### M0.1 — Repo scaffold
+
+- [ ] pnpm workspace with `packages/tokens`, `packages/components`, `apps/storybook`
+- [ ] TypeScript strict mode, shared `tsconfig.base.json`
+- [ ] ESLint + Prettier configured, pre-commit hook (lint-staged)
+- [ ] GitHub Actions: lint + typecheck + test on every PR
+- **Acceptance:** `pnpm install && pnpm build && pnpm test` succeeds from a clean clone.
+
+### M0.2 — Design tokens
+
+- [ ] Define tokens as data (JSON or TS objects), not hardcoded CSS: color scale, spacing scale, typography scale, radii, shadows, z-index scale
+- [ ] Build step that emits CSS custom properties + a typed TS export (`tokens.colorPrimary500`)
+- [ ] Light/dark theme via token overrides, not component-level conditionals
+- **Acceptance:** changing a token value updates every consuming component with no component code change.
+
+### M0.3 — Core primitives (7)
+
+Button, Input, Checkbox, Radio, Select, Badge, Icon.
+
+- [ ] Each has a typed prop API with variants (size, tone/intent, disabled/loading where relevant)
+- [ ] Each is keyboard-accessible and has correct ARIA roles/labels
+- [ ] Each has a Storybook story per variant combination that matters (not every permutation — the ones a consumer would actually reach for)
+- **Acceptance:** a consumer can build a basic form using only these 7 components with no raw HTML elements.
+
+### M0.4 — Composite components (7)
+
+Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
+
+- [ ] Built from M0.3 primitives where possible (Modal uses Button for its actions, etc.) — this composability is itself a portfolio signal
+- [ ] Focus management correct for Modal/Dropdown (focus trap, return focus on close)
+- [ ] Table supports sorting and a controlled/uncontrolled selection pattern
+- **Acceptance:** each composite has a Storybook story demonstrating a realistic use case, not just default props.
+
+### M0.5 — Storybook + deployed docs site
+
+- [ ] Storybook configured with the `autodocs` addon generating prop tables from TS types
+- [ ] Deployed publicly (Chromatic free tier or GitHub Pages) with a stable URL
+- **Acceptance:** the deployed URL is what goes in the resume/README — it must load and be navigable without local setup.
+
+### M0.6 — Test suite
+
+- [ ] Unit/interaction test per component: renders, responds to the interactions its API implies (click, keyboard nav, controlled value change)
+- [ ] Visual regression baseline captured for every Storybook story
+- [ ] CI fails the PR on a visual diff without an explicit approval step
+- **Acceptance:** deleting a component's implementation and leaving only its exported type should fail at least 2 tests.
+
+### M0.7 — Publish as a package
+
+- [ ] Versioned via changesets (or a simple manual semver bump) — mirrors real design-system release hygiene
+- [ ] Published to npm as unlisted/private, or at minimum tagged as a GitHub Release with a built artifact
+- **Acceptance:** `npm install <package>` (or a tarball install) works in a scratch project and components render.
+
+### M0.8 — README + architecture notes
+
+- [ ] Problem framing: what this proves, why a hand-built system rather than wrapping MUI/Radix
+- [ ] Architecture section: token pipeline, why CSS variables over CSS-in-JS, composability decisions from M0.4
+- [ ] "Design decisions" section per `CLAUDE.md` documentation rule
+- [ ] Screenshot or embedded Storybook link, not just text
+
+## Testing strategy (summary)
+
+Unit tests prove component behavior in isolation; visual regression proves the token pipeline actually reaches rendered output — this second guarantee is what Project 1's static analysis will lean on (it assumes tokens are the single source of truth for visual values).
+
+## Notes for Project 1 dependency
+
+Project 1 needs, at minimum from this project: exported TS prop types per component (for API-aware suggestions), the tokens package's exported names (to detect hardcoded values that should be token references), and at least one component with a deprecated prop (add one intentionally, e.g. `Button`'s old `color` prop deprecated in favor of `tone`) so Project 1 has a real deprecation case to detect.
