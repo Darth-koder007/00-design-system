@@ -1,0 +1,27 @@
+packages/components/src/Button.tsx
+  s_f0c6a093b18fbc::t_08e98e1f19e62d 9-10
+  s_f0c6a093b18fbc::t_6f0bb3f9edde48 26,29
+  s_f0c6a093b18fbc::t_1913563420000f 30
+packages/components/src/Button.test.tsx
+  s_f0c6a093b18fbc::t_c0302773e99300 28-41
+packages/components/package.json
+  s_f0c6a093b18fbc::t_2ea38cb58d5d11 3
+packages/components/CHANGELOG.md
+  s_f0c6a093b18fbc::t_1c23b856b77dfb 3-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "cd218f88643c61ecb3dc1e3159c332ba7fd85493",
+  "prompts": {},
+  "sessions": {
+    "s_f0c6a093b18fbc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdf59d10-8ac1-40c5-8e78-59b7400789f3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Darth-koder007 <vj2010sn@gmail.com>"
+    }
+  }
+}
