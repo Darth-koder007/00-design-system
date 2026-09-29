@@ -65,18 +65,20 @@ Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 - [x] CI fails the PR on a visual diff without an explicit approval step — separate `visual` job in `ci.yml`, runs against a fresh Chromium, uploads the diff image as an artifact on failure; accepting a real change requires deliberately running `test:visual:update` locally and committing the new baseline
 - **Acceptance:** verified end-to-end — deliberately changed a token color, confirmed 29/30 snapshots failed with the diff correctly detected and a non-zero exit code, then reverted and confirmed a clean pass. Caught a real bug in the process: Vite's library build strips CSS side-effect imports from `dist/index.js`, so `@ds/components` had no working public CSS export — fixed by adding an explicit `"./css": "./dist/components.css"` export (same pattern as `@ds/tokens`), now required reading for anyone consuming this package.
 
-### M0.7 — Publish as a package
+### M0.7 — Publish as a package — done (as a tarball; registry publish pending push)
 
-- [ ] Versioned via changesets (or a simple manual semver bump) — mirrors real design-system release hygiene
-- [ ] Published to npm as unlisted/private, or at minimum tagged as a GitHub Release with a built artifact
-- **Acceptance:** `npm install <package>` (or a tarball install) works in a scratch project and components render.
+- [x] Manual semver bump to `0.1.0` for both packages + a `CHANGELOG.md` each — real changesets tooling would be the next step if this graduates past a portfolio piece, manual bump matches the plan's "or a simple manual semver bump" allowance
+- [x] `files` field added to both `package.json`s so the published tarball ships only `dist/` + `CHANGELOG.md`, not source/tests (initial `pnpm pack` shipped the full `src/` tree — caught and fixed)
+- [ ] **Blocked on the user:** actual npm registry publish or a tagged GitHub Release needs npm/GitHub account access I don't have
+- **Acceptance:** verified without needing a registry — `pnpm pack` both packages, installed the resulting tarballs via plain `npm install file:...` in a from-scratch consumer project (no workspace access), rendered `<Button>` with `react-dom/server`, and confirmed both the expected CSS classes and the actual token/component CSS content are present in the installed package. This is the "tarball install" path the acceptance criterion explicitly allows.
 
-### M0.8 — README + architecture notes
+### M0.8 — README + architecture notes — done
 
-- [ ] Problem framing: what this proves, why a hand-built system rather than wrapping MUI/Radix
-- [ ] Architecture section: token pipeline, why CSS variables over CSS-in-JS, composability decisions from M0.4
-- [ ] "Design decisions" section per `CLAUDE.md` documentation rule
-- [ ] Screenshot or embedded Storybook link, not just text
+- [x] Problem framing: what this proves, why a hand-built system rather than wrapping MUI/Radix
+- [x] Architecture section: token pipeline, why CSS variables over CSS-in-JS, why CSS is a separate export (the real bug from M0.6/M0.7), composability decisions from M0.4
+- [x] "What was actually hard" section per `CLAUDE.md`'s documentation rule
+- [ ] Screenshot or embedded Storybook link — pending the M0.5 deploy step (needs the GitHub push this whole plan is blocked on for external-account reasons); the README currently points to local commands instead
+- **Acceptance:** `README.md` written for a hiring-decision reader per `CLAUDE.md` — leads with what it proves, documents the two real bugs found during development (missing CSS export, screenshot-selector/threshold false negatives in visual testing) rather than only listing what went right.
 
 ## Testing strategy (summary)
 

@@ -1,6 +1,6 @@
 {
   "name": "@ds/tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,6 +8,10 @@
     ".": "./dist/index.js",
     "./css": "./dist/tokens.css"
   },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": "vite build && node scripts/build-css.mjs",
     "test": "vitest run",

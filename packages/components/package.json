@@ -1,6 +1,6 @@
 {
   "name": "@ds/components",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -8,6 +8,10 @@
     ".": "./dist/index.js",
     "./css": "./dist/components.css"
   },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
   "peerDependencies": {
     "react": "^18.3.0 || ^19.0.0",
     "react-dom": "^18.3.0 || ^19.0.0"
