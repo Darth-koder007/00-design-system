@@ -49,11 +49,14 @@ Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 - [ ] Storybook story per composite — deferred to M0.5
 - **Acceptance:** verified via interaction tests (36 total across the primitives + composites): Modal traps focus and restores it, Dropdown closes on outside-click/Escape, Tabs supports arrow-key roving navigation with wraparound, Table sorts and multi-selects. Visual Storybook confirmation lands with M0.5.
 
-### M0.5 — Storybook + deployed docs site
+### M0.5 — Storybook + deployed docs site — configured, deploy pending push
 
-- [ ] Storybook configured with the `autodocs` addon generating prop tables from TS types
-- [ ] Deployed publicly (Chromatic free tier or GitHub Pages) with a stable URL
-- **Acceptance:** the deployed URL is what goes in the resume/README — it must load and be navigable without local setup.
+- [x] Storybook 8 (`apps/storybook`) configured with `@storybook/addon-essentials` (includes autodocs) and `@storybook/addon-a11y`; a story per primitive/composite, colocated with source (14 files, `packages/components/src/*.stories.tsx`)
+- [x] Light/dark theme toolbar wired to the token package's `[data-theme]` mechanism from M0.2
+- [x] `pnpm build` at the workspace root now builds tokens → components → storybook in order; verified locally, produces `apps/storybook/storybook-static`
+- [x] `.github/workflows/deploy-storybook.yml` added — builds and deploys `storybook-static` to GitHub Pages on push to `main`
+- [ ] **Blocked on the user:** actually deploying requires pushing this repo to a GitHub remote and enabling Pages for it (needs GitHub account/repo access I don't have) — the workflow is ready to run the moment that happens
+- **Acceptance:** local build succeeds and is navigable (`pnpm --filter @ds/storybook dev`); the public URL itself is pending the push/Pages step above.
 
 ### M0.6 — Test suite
 
