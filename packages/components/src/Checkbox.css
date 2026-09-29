@@ -1,0 +1,22 @@
+.ds-checkbox-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-spacing-2);
+}
+
+.ds-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ds-color-accent);
+}
+
+.ds-checkbox:focus-visible {
+  outline: 2px solid var(--ds-color-accent);
+  outline-offset: 1px;
+}
+
+.ds-checkbox-label {
+  font-family: var(--ds-font-family-base);
+  font-size: var(--ds-font-size-md);
+  color: var(--ds-color-text-primary);
+}

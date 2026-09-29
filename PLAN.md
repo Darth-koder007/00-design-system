@@ -30,14 +30,14 @@ A small, original component library that is real enough to demonstrate component
 - [x] Light/dark theme via token overrides (`[data-theme="dark"]`), not component-level conditionals — semantic tokens (`colorAccent`, `colorSurface`, etc.) swap value per theme, primitives don't change
 - **Acceptance:** `Button.css` references only `var(--ds-*)` custom properties for themeable values (verified: 16 usages, zero hardcoded colors/spacing) — a token value change propagates to every consumer through the generated stylesheet with no component code change. Full visual confirmation lands with Storybook in M0.5.
 
-### M0.3 — Core primitives (7)
+### M0.3 — Core primitives (7) — done except Storybook
 
 Button, Input, Checkbox, Radio, Select, Badge, Icon.
 
-- [ ] Each has a typed prop API with variants (size, tone/intent, disabled/loading where relevant)
-- [ ] Each is keyboard-accessible and has correct ARIA roles/labels
-- [ ] Each has a Storybook story per variant combination that matters (not every permutation — the ones a consumer would actually reach for)
-- **Acceptance:** a consumer can build a basic form using only these 7 components with no raw HTML elements.
+- [x] Each has a typed prop API with variants (size, tone/intent, disabled/loading where relevant)
+- [x] Each is keyboard-accessible and has correct ARIA roles/labels (`aria-invalid`/`aria-describedby` on Input/Select, native semantics on Checkbox/Radio, `role="img"`/`aria-hidden` on Icon)
+- [ ] Each has a Storybook story per variant combination that matters — deferred to M0.5, no Storybook instance exists yet
+- **Acceptance:** a consumer can build a basic form using only these 7 components with no raw HTML elements — verified structurally (Input/Select/Checkbox/Radio cover every native form control primitive); visual/interaction confirmation in Storybook lands with M0.5.
 
 ### M0.4 — Composite components (7)
 
