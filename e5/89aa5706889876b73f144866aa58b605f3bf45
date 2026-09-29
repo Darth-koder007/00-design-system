@@ -1,0 +1,61 @@
+packages/components/src/Badge.tsx
+  s_f0c6a093b18fbc::t_55a8db7acfd1ad 1-25
+packages/components/src/Icon.css
+  s_f0c6a093b18fbc::t_513a851cad5ec3 1-14
+packages/components/src/Badge.css
+  s_f0c6a093b18fbc::t_9539a8feb2a5d3 1-35
+packages/components/src/Select.tsx
+  s_f0c6a093b18fbc::t_09bf942425fcdd 1-62
+packages/components/src/Radio.css
+  s_f0c6a093b18fbc::t_b69c093d745f0a 1-22
+packages/components/src/Select.test.tsx
+  s_f0c6a093b18fbc::t_aac44e14a99b30 1-27
+packages/components/src/Icon.tsx
+  s_f0c6a093b18fbc::t_14460ed016846c 1-40
+packages/components/src/Checkbox.tsx
+  s_f0c6a093b18fbc::t_61fa53ec2bd68a 1-6,8,10-16,18-21,23-55
+  s_f0c6a093b18fbc::t_dbcbf51eb113a1 7,9
+  s_f0c6a093b18fbc::t_9e8cb1b2e18f55 17,22
+  s_f0c6a093b18fbc::t_d07e5b2e68053e 56-58
+packages/components/src/Checkbox.test.tsx
+  s_f0c6a093b18fbc::t_cd94afc3e83237 1-27
+packages/components/src/Input.test.tsx
+  s_f0c6a093b18fbc::t_95679d60e50cf2 1-29
+packages/components/src/Checkbox.css
+  s_f0c6a093b18fbc::t_8174124bf12ab6 1-22
+packages/components/src/index.ts
+  s_f0c6a093b18fbc::t_492db55f2a0baf 2-7,10-15
+PLAN.md
+  s_f0c6a093b18fbc::t_c0efec51def969 33,37-40
+packages/components/src/Radio.test.tsx
+  s_f0c6a093b18fbc::t_d47e1555496997 1-24
+packages/components/src/Input.tsx
+  s_f0c6a093b18fbc::t_f60ea1b21db294 1-53
+  s_f0c6a093b18fbc::t_69a436823ff385 54-62
+packages/components/src/Radio.tsx
+  s_f0c6a093b18fbc::t_fe116b56459bc5 1-23
+packages/components/src/Select.css
+  s_f0c6a093b18fbc::t_432dcd27522ee6 1-49
+packages/components/src/Badge.test.tsx
+  s_f0c6a093b18fbc::t_db45266d17fdbc 1-18
+packages/components/src/Input.css
+  s_f0c6a093b18fbc::t_078533c5c4e373 1-54
+packages/components/src/Icon.test.tsx
+  s_f0c6a093b18fbc::t_476f7e67838c16 1-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "e589aa5706889876b73f144866aa58b605f3bf45",
+  "prompts": {},
+  "sessions": {
+    "s_f0c6a093b18fbc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdf59d10-8ac1-40c5-8e78-59b7400789f3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Darth-koder007 <vj2010sn@gmail.com>"
+    }
+  }
+}
