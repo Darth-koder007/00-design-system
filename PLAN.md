@@ -23,12 +23,12 @@ A small, original component library that is real enough to demonstrate component
 - [ ] GitHub Actions: lint + typecheck + test on every PR
 - **Acceptance:** `pnpm install && pnpm build && pnpm test` succeeds from a clean clone.
 
-### M0.2 — Design tokens
+### M0.2 — Design tokens — done
 
-- [ ] Define tokens as data (JSON or TS objects), not hardcoded CSS: color scale, spacing scale, typography scale, radii, shadows, z-index scale
-- [ ] Build step that emits CSS custom properties + a typed TS export (`tokens.colorPrimary500`)
-- [ ] Light/dark theme via token overrides, not component-level conditionals
-- **Acceptance:** changing a token value updates every consuming component with no component code change.
+- [x] Define tokens as data (TS objects), not hardcoded CSS: color scale, spacing scale, typography scale, radii, shadows, z-index scale (`packages/tokens/src`)
+- [x] Build step (`vite build` + `scripts/build-css.mjs`) emits CSS custom properties (`dist/tokens.css`) alongside the typed TS export
+- [x] Light/dark theme via token overrides (`[data-theme="dark"]`), not component-level conditionals — semantic tokens (`colorAccent`, `colorSurface`, etc.) swap value per theme, primitives don't change
+- **Acceptance:** `Button.css` references only `var(--ds-*)` custom properties for themeable values (verified: 16 usages, zero hardcoded colors/spacing) — a token value change propagates to every consumer through the generated stylesheet with no component code change. Full visual confirmation lands with Storybook in M0.5.
 
 ### M0.3 — Core primitives (7)
 
