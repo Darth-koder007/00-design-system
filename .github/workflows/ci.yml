@@ -26,23 +26,20 @@ jobs:
 
   visual:
     runs-on: ubuntu-latest
-    # Pinned to the exact image + tag the baselines were regenerated in (mcr.microsoft.com/
-    # playwright:v1.63.0-jammy, matched to the playwright-core version pnpm actually resolves
-    # from the lockfile, not just the devDependency's ^1.48.2 range). Installing a browser
-    # separately on bare ubuntu-latest produced the same ~0.14% diff on every run regardless of
-    # which machine generated the baseline PNGs — different font packages between that install
-    # and this container's bundled set, not a flaky threshold. Running the whole job inside the
-    # same container the baselines came from removes that variable entirely.
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-jammy
     steps:
       - uses: actions/checkout@v4
 
-      - run: npm install -g pnpm@10.33.0
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @ds/tokens run build
       - run: pnpm --filter @ds/components run build
+      - run: pnpm --filter @ds/storybook exec playwright install --with-deps chromium
       - run: pnpm --filter @ds/storybook run test:visual
 
       - if: failure()
