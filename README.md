@@ -2,6 +2,8 @@
 
 A small, original React component library — 7 primitives, 7 composites, a token pipeline, Storybook docs, and a self-hosted visual regression suite. Built from scratch rather than wrapping MUI or Radix, because the point was to prove component API design and release discipline, not to prove I can write JSX around someone else's primitives.
 
+**Live Storybook: https://darth-koder007.github.io/00-design-system/**
+
 It also exists to give the next two projects in this portfolio something real to operate on — a design-system-aware AI assistant and a RAG-based doc search need an actual design system with actual conventions (and, deliberately, one actual deprecated prop) to be meaningfully tested against.
 
 ## What's in here
@@ -36,4 +38,4 @@ pnpm --filter @ds/storybook run test:visual   # visual regression suite (spins u
 
 ## Status
 
-Everything through local verification is done — see `PLAN.md` for the full milestone breakdown and `PROGRESS.md` (one level up) for cross-project status. What's genuinely pending is external to the code: pushing this repo to a GitHub remote (for the Storybook Pages deploy and an eventual npm publish/GitHub Release) needs an account this assistant doesn't have access to. The packaging itself is verified — see M0.7 in `PLAN.md` for a from-scratch tarball-install test that doesn't depend on a registry at all.
+Pushed, public, and deployed — see `PLAN.md` for the full milestone breakdown, including two real CI bugs the push itself surfaced (a pnpm-version config conflict, and a cross-platform visual-regression baseline mismatch between macOS and CI's Ubuntu runners), and `PROGRESS.md` (one level up) for cross-project status. An npm registry publish is still optional and not done — every consumer in this portfolio uses a `link:`/workspace dependency, not the registry; see M0.7 in `PLAN.md` for a from-scratch tarball-install test that already proves the packaging works without one.

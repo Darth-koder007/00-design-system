@@ -49,14 +49,14 @@ Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 - [x] Storybook story per composite (M0.5)
 - **Acceptance:** verified via interaction tests (36 total across the primitives + composites) and Storybook stories: Modal traps focus and restores it, Dropdown closes on outside-click/Escape, Tabs supports arrow-key roving navigation with wraparound, Table sorts and multi-selects.
 
-### M0.5 — Storybook + deployed docs site — configured, deploy pending push
+### M0.5 — Storybook + deployed docs site — done, live
 
 - [x] Storybook 8 (`apps/storybook`) configured with `@storybook/addon-essentials` (includes autodocs) and `@storybook/addon-a11y`; a story per primitive/composite, colocated with source (14 files, `packages/components/src/*.stories.tsx`)
 - [x] Light/dark theme toolbar wired to the token package's `[data-theme]` mechanism from M0.2
 - [x] `pnpm build` at the workspace root now builds tokens → components → storybook in order; verified locally, produces `apps/storybook/storybook-static`
 - [x] `.github/workflows/deploy-storybook.yml` added — builds and deploys `storybook-static` to GitHub Pages on push to `main`
-- [ ] **Blocked on the user:** actually deploying requires pushing this repo to a GitHub remote and enabling Pages for it (needs GitHub account/repo access I don't have) — the workflow is ready to run the moment that happens
-- **Acceptance:** local build succeeds and is navigable (`pnpm --filter @ds/storybook dev`); the public URL itself is pending the push/Pages step above.
+- [x] Pushed and deployed for real: **https://darth-koder007.github.io/00-design-system/** — live-verified (title, zero console errors) via a headless browser hit against the real URL, not just "the workflow succeeded"
+- **Acceptance:** local build succeeds and is navigable; the public URL is live and verified.
 
 ### M0.6 — Test suite — done
 
@@ -65,11 +65,12 @@ Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 - [x] CI fails the PR on a visual diff without an explicit approval step — separate `visual` job in `ci.yml`, runs against a fresh Chromium, uploads the diff image as an artifact on failure; accepting a real change requires deliberately running `test:visual:update` locally and committing the new baseline
 - **Acceptance:** verified end-to-end — deliberately changed a token color, confirmed 29/30 snapshots failed with the diff correctly detected and a non-zero exit code, then reverted and confirmed a clean pass. Caught a real bug in the process: Vite's library build strips CSS side-effect imports from `dist/index.js`, so `@ds/components` had no working public CSS export — fixed by adding an explicit `"./css": "./dist/components.css"` export (same pattern as `@ds/tokens`), now required reading for anyone consuming this package.
 
-### M0.7 — Publish as a package — done (as a tarball; registry publish pending push)
+### M0.7 — Publish as a package — done (as a tarball; npm registry publish still optional/not done)
 
 - [x] Manual semver bump to `0.1.0` for both packages + a `CHANGELOG.md` each — real changesets tooling would be the next step if this graduates past a portfolio piece, manual bump matches the plan's "or a simple manual semver bump" allowance
 - [x] `files` field added to both `package.json`s so the published tarball ships only `dist/` + `CHANGELOG.md`, not source/tests (initial `pnpm pack` shipped the full `src/` tree — caught and fixed)
-- [ ] **Blocked on the user:** actual npm registry publish or a tagged GitHub Release needs npm/GitHub account access I don't have
+- [x] GitHub repo access resolved — `@ds/components`/`@ds/tokens` are consumed as real `link:` dependencies by Projects 1 and 4 now, both verified working against the pushed repo
+- [ ] An actual npm registry publish is still not done — optional, not blocking anything else in this portfolio (every consumer uses a workspace/git link, not the npm registry)
 - **Acceptance:** verified without needing a registry — `pnpm pack` both packages, installed the resulting tarballs via plain `npm install file:...` in a from-scratch consumer project (no workspace access), rendered `<Button>` with `react-dom/server`, and confirmed both the expected CSS classes and the actual token/component CSS content are present in the installed package. This is the "tarball install" path the acceptance criterion explicitly allows.
 
 ### M0.8 — README + architecture notes — done
@@ -77,8 +78,13 @@ Modal, Dropdown, Tabs, Toast, Card, Table, Tooltip.
 - [x] Problem framing: what this proves, why a hand-built system rather than wrapping MUI/Radix
 - [x] Architecture section: token pipeline, why CSS variables over CSS-in-JS, why CSS is a separate export (the real bug from M0.6/M0.7), composability decisions from M0.4
 - [x] "What was actually hard" section per `CLAUDE.md`'s documentation rule
-- [ ] Screenshot or embedded Storybook link — pending the M0.5 deploy step (needs the GitHub push this whole plan is blocked on for external-account reasons); the README currently points to local commands instead
+- [x] Live Storybook link added now that M0.5 is deployed: **https://darth-koder007.github.io/00-design-system/**
 - **Acceptance:** `README.md` written for a hiring-decision reader per `CLAUDE.md` — leads with what it proves, documents the two real bugs found during development (missing CSS export, screenshot-selector/threshold false negatives in visual testing) rather than only listing what went right.
+
+### M0.9 — Flip repo to public — done
+
+- [x] Pushed to `github.com/Darth-koder007/00-design-system`, public from the start (all milestones here were already complete and verified before the push, so there was no reason to stage through private first)
+- **Found and fixed two real CI bugs during the actual push, not just locally:** (1) `pnpm/action-setup@v4`'s explicit `version: 10` conflicted with this repo's own `packageManager: "pnpm@10.33.0"` field in `package.json` — fixed by removing the redundant explicit version (this repo is the only one in the portfolio with a root-level `packageManager` field, so this exact fix doesn't generalize to the others, which still need the explicit version). (2) The visual-regression baselines, captured on macOS during local development, failed 23/30 snapshots in CI (Ubuntu) purely from font/subpixel rendering differences — a real cross-platform visual-regression gap. Fixed properly by adding a `workflow_dispatch` job (`update-visual-baselines.yml`) that regenerates the baselines using CI's own exact environment, rather than hand-matching a local Docker image to GitHub's runner (tried, and still didn't match closely enough — see the commit history for the full chase). Both CI and the Storybook deploy are green on the current `main`.
 
 ## Testing strategy (summary)
 
