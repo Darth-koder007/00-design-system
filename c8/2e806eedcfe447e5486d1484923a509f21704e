@@ -1,0 +1,25 @@
+PLAN.md
+  s_f0c6a093b18fbc::t_f0776a389676d4 81,84-87
+  s_f0c6a093b18fbc::t_daf42979ade8b8 52,58-59
+  s_f0c6a093b18fbc::t_dce3a7427ee8a1 68,72-73
+  s_f0c6a093b18fbc::t_f32b690c0de668 88
+README.md
+  s_f0c6a093b18fbc::t_875baa5e7d0af9 5-6
+  s_f0c6a093b18fbc::t_67b12a776b65a8 41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "c82e806eedcfe447e5486d1484923a509f21704e",
+  "prompts": {},
+  "sessions": {
+    "s_f0c6a093b18fbc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdf59d10-8ac1-40c5-8e78-59b7400789f3",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Darth-koder007 <vj2010sn@gmail.com>"
+    }
+  }
+}
